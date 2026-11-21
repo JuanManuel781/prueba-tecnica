@@ -45,3 +45,11 @@ La API acepta peticiones del origen que diga `WEB_ORIGIN`, y por defecto `http:/
 ## Antes de entregar
 
 Reemplaza este archivo por tu propio `README.md`, con cómo se corre tu proyecto, qué decisiones tomaste, qué dejaste afuera y qué harías con más tiempo.
+
+
+### logica de solucion
+
+para resolver este problema segun mi perspectiva y logica se creo un formulario el cual permite crear un codigo de un solo digito con su repectivo nombre, validando que para el segun formulario no permita crear si en caso de que el primer codigo no exista y asi susecivamente con los demas lo que se realizo es que una vez creado el codigo se lo pueda seleccionar en la creacion del segundo codigo de dos digitos y si sucesivamente adicional a esto se realizo la grafica en forma de arbol de los diferentes codigo que se creo se ralizaron las respctivas validaciones si el codigo existe no permite crearlo de nuevo adicionalemnte a eso se puede crear ejemplo de do digos que pertencescan al mismo codifgo de un digito n codigos, el guardado se realizo en un array en memoria cada vez se reinia se pierde la informacion el proyecto corre
+
+frontend  ---> npm run dev
+backend --> npm run star
