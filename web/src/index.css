@@ -2,6 +2,11 @@
   font-family: system-ui, sans-serif;
   line-height: 1.5;
   color-scheme: light dark;
+
+  --borde: light-dark(#d4d4d8, #3f3f46);
+  --fondo-panel: light-dark(#fafafa, #18181b);
+  --acento: light-dark(#2563eb, #60a5fa);
+  --texto-suave: light-dark(#52525b, #a1a1aa);
 }
 
 body {
@@ -9,7 +14,156 @@ body {
 }
 
 main {
-  max-width: 48rem;
+  max-width: 72rem;
   margin: 0 auto;
   padding: 2rem 1rem;
+}
+
+/* ---------- Disposición en dos columnas ---------- */
+
+.disposicion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 48rem) {
+  .disposicion {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.panel {
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  background: var(--fondo-panel);
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+/* ---------- Pestañas ---------- */
+
+.pestanas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--borde);
+  margin-bottom: 1rem;
+}
+
+.pestanas button {
+  font: inherit;
+  padding: 0.5rem 0.875rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+
+.pestanas button[aria-selected='true'] {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
+  font-weight: 600;
+}
+
+.pestanas button:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: -2px;
+}
+
+/* ---------- Formularios ---------- */
+
+.formulario {
+  display: grid;
+  gap: 1rem;
+}
+
+.campo {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.campo input,
+.campo select {
+  font: inherit;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campo input[aria-invalid='true'],
+.campo select[aria-invalid='true'] {
+  border-color: crimson;
+}
+
+.con-prefijo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error {
+  margin: 0;
+  color: crimson;
+  font-size: 0.875rem;
+}
+
+.formulario button {
+  font: inherit;
+  padding: 0.5rem 1rem;
+  justify-self: start;
+  cursor: pointer;
+}
+
+/* ---------- Árbol de prefijos ---------- */
+
+.arbol,
+.arbol ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.arbol ul {
+  margin-left: 0.75rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--borde);
+}
+
+.arbol li {
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+/* Rama horizontal que une cada nodo con la línea vertical del padre. */
+.arbol ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 1.05rem;
+  width: 0.75rem;
+  border-top: 1px solid var(--borde);
+}
+
+.nodo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.nodo-numero {
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  color: var(--acento);
+}
+
+.nodo-nombre {
+  color: inherit;
 }
